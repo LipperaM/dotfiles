@@ -4,10 +4,9 @@
   "position": "top",
   "spacing": 0,
   "height": 26,
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["hyprland/workspaces", "custom/iphone_charge"],
   "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator"],
   "modules-right": [
-    "iphone_charge",
     "bluetooth",
     "network",
     "pulseaudio",
@@ -53,11 +52,11 @@
     "signal": 7,
     "interval": 3600
   },
-
   "custom/iphone_charge": {
-    "format": "{output}%",
-    "exec": "cat /tmp/iphone_charge 2>/dev/null || echo ''",
-    "interval": 5
+    "exec": "sh -c '/bin/cat /tmp/iphone_charge 2>/dev/null || echo \"\"'",
+    "format": " {}%",
+    "interval": 60,
+    "return-type": "text"
 },
   "cpu": {
     "interval": 5,
