@@ -18,7 +18,7 @@ The goal of this repository is to keep a clean, reproducible, and well-structure
 │   │   ├── bindings.conf
 │   │   └── hyprland.conf
 │   └── waybar/
-        └── config.jsonc
+│       └── config.jsonc
 └── dot_bashrc
 
 ```
