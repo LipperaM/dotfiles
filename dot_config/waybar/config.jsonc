@@ -7,6 +7,7 @@
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator"],
   "modules-right": [
+    "iphone_charge",
     "bluetooth",
     "network",
     "pulseaudio",
@@ -53,6 +54,11 @@
     "interval": 3600
   },
 
+  "custom/iphone_charge": {
+    "format": "{output}%",
+    "exec": "cat /tmp/iphone_charge 2>/dev/null || echo ''",
+    "interval": 5
+},
   "cpu": {
     "interval": 5,
     "format": "󰍛",
