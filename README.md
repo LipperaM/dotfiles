@@ -27,32 +27,28 @@ The goal of this repository is to keep a clean, reproducible, and well-structure
 
 ## bin/
 
-> Executable scripts that are installed into ~/bin (or another directory in $PATH) via chezmoi.
+Executable scripts that are installed into ~/bin (or another directory in $PATH) via chezmoi.
 
 * iphone_charge.sh
-
-> Displays my iPhone battery level in Waybar while charging, using iOS Shortcuts as the data source.
+Displays my iPhone battery level in Waybar while charging, using iOS Shortcuts as the data source.
 
 ## dot_config/
 
-> Configuration files that are installed into ~/.config.
+Configuration files that are installed into ~/.config.
 
 ### hypr/
 
-> Hyprland configuration.
+Hyprland configuration.
 
 * hyprland.conf
-
-> General Hyprland configuration and rules.
+General Hyprland configuration and rules.
 
 * bindings.conf
-
-> Keybindings and shortcuts.
+Keybindings and shortcuts.
 
 ### waybar/
 
-> Waybar configuration, including modules, styles, and custom scripts.
+Waybar configuration, including modules, styles, and custom scripts.
 
 * config.jsonc
-
-> Waybar structure and modules.
+Waybar structure and modules.
