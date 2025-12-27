@@ -18,7 +18,8 @@ The goal of this repository is to keep a clean, reproducible, and well-structure
 │   │   ├── bindings.conf
 │   │   └── hyprland.conf
 │   └── waybar/
-│       └── config.jsonc
+│       ├── config.jsonc
+│       └── style.css
 └── dot_bashrc
 
 ```
@@ -51,8 +52,27 @@ Keybindings and shortcuts.
 
 ### waybar/
 
-Waybar configuration, including modules, styles, and custom scripts.
+Waybar configuration, including modules and styles.
 
 * config.jsonc
 
 Waybar structure and modules.
+
+* style.css
+
+Waybar stylesheet.
+
+---
+
+## Chezmoi naming conventions
+
+This repository uses chezmoi’s file naming conventions to define how files are installed.
+
+* `dot_` → installed as hidden files (`dot_bashrc` → `~/.bashrc`)
+* `executable_` → installed with executable permissions
+* `private_` → installed with restrictive permissions (secrets, keys)
+* `readonly_` → installed as read-only
+* `create_` → ensures empty directories exist
+* `remove_` → removes files from the destination
+* `.tmpl` → Go templates processed by chezmoi
+* `run_` → scripts executed during `chezmoi apply`
