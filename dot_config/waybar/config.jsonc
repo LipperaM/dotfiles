@@ -56,6 +56,7 @@
   "custom/iphone_charge": {
     "exec": "sh -c '/bin/cat /tmp/iphone_charge 2>/dev/null || echo \"\"'",
     "format": " {}%",
+    "tooltip-format": "iPhone charging",
     "interval": 60,
     "return-type": "text"
 },
@@ -112,7 +113,7 @@
     "on-click": "omarchy-launch-bluetooth"
   },
   "pulseaudio": {
-    "format": "{icon}  {volume}",
+    "format": "{volume} {icon}",
     "on-click": "$TERMINAL --class=Wiremix -e wiremix",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
