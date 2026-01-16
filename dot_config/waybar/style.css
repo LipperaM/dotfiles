@@ -63,6 +63,8 @@
 
 tooltip {
   padding: 2px;
+  background-color: black;
+  border-radius: 8px;
 }
 
 #custom-update {
