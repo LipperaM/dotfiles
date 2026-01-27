@@ -21,25 +21,36 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 function pomo() {
     work_min=$1
     break_min=$2
+    long_break_min=$3
     sound="/usr/share/sounds/freedesktop/stereo/complete.oga"
 
-    if [[ -z "$work_min" || -z "$break_min" ]]; then
-        echo "usage: pomo <work_time> <break_time>"
+    if [[ -z "$work_min" || -z "$break_min" || -z "$long_break_min" ]]; then
+        echo "usage: pomo <work_time> <break_time> <long_break_time>"
+        echo "example: pomo 25 5 10"
         return 1
     fi
 
     work_sec=$((work_min * 60))
     break_sec=$((break_min * 60))
+    long_break_sec=$((long_break_min * 60))
+
+    cycle=0
 
     while true; do
-        notify-send -a pomo "Working time" "Starts focus (${work_min} min)"
-        echo "working time"
+        notify-send -a pomo "Working time" "Focus (${work_min} min)"
         paplay "$sound"
         sleep "$work_sec"
 
-        notify-send -a pomo "Break time" "Take a break (${break_min} min)"
-        echo "break time"
-        paplay "$sound"
-        sleep "$break_sec"
+        ((cycle++))
+
+        if (( cycle % 3 == 0 )); then
+            notify-send -a pomo "Long break" "Rest (${long_break_min} min)"
+            paplay "$sound"
+            sleep "$long_break_sec"
+        else
+            notify-send -a pomo "Break time" "Rest (${break_min} min)"
+            paplay "$sound"
+            sleep "$break_sec"
+        fi
     done
 }
