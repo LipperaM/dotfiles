@@ -17,3 +17,29 @@ export PATH="$PATH:/home/bennet/.local/bin"
 # Export SSH_AGENT vars
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
+# Pomodoro timer script
+function pomo() {
+    work_min=$1
+    break_min=$2
+    sound="/usr/share/sounds/freedesktop/stereo/complete.oga"
+
+    if [[ -z "$work_min" || -z "$break_min" ]]; then
+        echo "usage: pomo <work_time> <break_time>"
+        return 1
+    fi
+
+    work_sec=$((work_min * 60))
+    break_sec=$((break_min * 60))
+
+    while true; do
+        notify-send -a pomo "Working time" "Starts focus (${work_min} min)"
+        echo "working time"
+        paplay "$sound"
+        sleep "$work_sec"
+
+        notify-send -a pomo "Break time" "Take a break (${break_min} min)"
+        echo "break time"
+        paplay "$sound"
+        sleep "$break_sec"
+    done
+}
