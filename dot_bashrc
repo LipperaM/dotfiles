@@ -19,22 +19,35 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # Pomodoro timer script
 function pomo() {
-    work_min=$1
-    break_min=$2
-    long_break_min=$3
-    sound="/usr/share/sounds/freedesktop/stereo/complete.oga"
+    local work_min=$1
+    local break_min=$2
+    local long_break_min=$3
+    local sound="/usr/share/sounds/freedesktop/stereo/complete.oga"
 
-    if [[ -z "$work_min" || -z "$break_min" || -z "$long_break_min" ]]; then
+    if [[ $# -ne 3 ]]; then
         echo "usage: pomo <work_time> <break_time> <long_break_time>"
         echo "example: pomo 25 5 10"
         return 1
     fi
 
-    work_sec=$((work_min * 60))
-    break_sec=$((break_min * 60))
-    long_break_sec=$((long_break_min * 60))
+    if ! [[ $work_min =~ ^[0-9]+$ && $break_min =~ ^[0-9]+$ && $long_break_min =~ ^[0-9]+$ ]]; then
+        echo "arguments must be integers"
+        return 1
+    fi
 
-    cycle=0
+    local work_sec=$((work_min * 60))
+    local break_sec=$((break_min * 60))
+    local long_break_sec=$((long_break_min * 60))
+
+    cleanup() {
+        trap - SIGINT SIGTERM SIGHUP
+        kill 0
+        return
+    }
+
+    trap cleanup SIGINT SIGTERM SIGHUP
+
+    local cycle=0
 
     while true; do
         notify-send -a pomo "Working time" "Focus (${work_min} min)"
