@@ -13,6 +13,7 @@ The goal of this repository is to keep a clean, reproducible, and well-structure
 .
 ├── bin/
 │   └── executable_iphone_charge.sh
+├── dot_bashrc
 ├── dot_config/
 │   ├── hypr/
 │   │   ├── bindings.conf
@@ -20,23 +21,48 @@ The goal of this repository is to keep a clean, reproducible, and well-structure
 │   └── waybar/
 │       ├── config.jsonc
 │       └── style.css
-└── dot_bashrc
-
+├── private_dot_local/
+│   └── share/
+│       └── omarchy/
+│           └── themes/
+│               └── catppuccin/
+│                   ├── mako.ini
+│                   └── walker.css
 ```
 
 ---
 
 ## bin/
 
+
 Executable scripts that are installed into ~/bin (or another directory in $PATH) via chezmoi.
 
-* iphone_charge.sh
+- **executable_iphone_charge.sh**: Displays my iPhone battery level in Waybar while charging, using iOS Shortcuts as the data source.
 
-Displays my iPhone battery level in Waybar while charging, using iOS Shortcuts as the data source.
+
+## dot_bashrc
+
+Main bash configuration file.
 
 ## dot_config/
 
+
 Configuration files that are installed into ~/.config.
+
+- **hypr/**: Hyprland configuration.
+	- bindings.conf
+	- hyprland.conf
+- **waybar/**: Waybar configuration.
+	- config.jsonc
+	- style.css
+
+
+## private_dot_local/share/omarchy/themes/catppuccin/
+
+Custom themes and configuration files:
+
+- **mako.ini**: Configuration for mako notifier with the Catppuccin theme.
+- **walker.css**: Custom CSS styles for the Catppuccin theme.
 
 ### hypr/
 
