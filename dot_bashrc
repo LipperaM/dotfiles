@@ -26,7 +26,6 @@ function pomo() {
 
     if [[ $# -ne 3 ]]; then
         echo "usage: pomo <work_time> <break_time> <long_break_time>"
-        echo "example: pomo 25 5 10"
         return 1
     fi
 
@@ -40,29 +39,31 @@ function pomo() {
     local long_break_sec=$((long_break_min * 60))
 
     cleanup() {
-        trap - SIGINT SIGTERM SIGHUP
-        kill 0
-        return
+        # eliminar hijos del script
+        pkill -P $$
+        # salir del script
+        exit 1
     }
 
-    trap cleanup SIGINT SIGTERM SIGHUP
+    # capturar CTRL+C, cierre de terminal, y fin normal
+    trap cleanup SIGINT SIGTERM SIGHUP EXIT
 
     local cycle=0
 
     while true; do
-        notify-send -a pomo "Working time" "Focus (${work_min} min)"
-        paplay "$sound"
+        notify-send -a pomo "Working time" "Focus (${work_min} min)" &
+        paplay "$sound" &
         sleep "$work_sec"
 
         ((cycle++))
 
         if (( cycle % 3 == 0 )); then
-            notify-send -a pomo "Long break" "Rest (${long_break_min} min)"
-            paplay "$sound"
+            notify-send -a pomo "Long break" "Rest (${long_break_min} min)" &
+            paplay "$sound" &
             sleep "$long_break_sec"
         else
-            notify-send -a pomo "Break time" "Rest (${break_min} min)"
-            paplay "$sound"
+            notify-send -a pomo "Break time" "Rest (${break_min} min)" &
+            paplay "$sound" &
             sleep "$break_sec"
         fi
     done
