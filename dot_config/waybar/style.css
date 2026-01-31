@@ -12,12 +12,24 @@
   font-weight: 700;
 }
 
+#waybar > box {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    min-height: unset;
+}
+
 .modules-left {
   margin-left: 8px;
+  background-color: #242432;
+  border-radius: 0 0 8px 8px;
 }
 
 .modules-right {
   margin-right: 8px;
+  background-color: #242432;
+  border: none;
+  padding: 0 4px;
+  border-radius: 0 0 8px 8px;
 }
 
 #workspaces button {
@@ -68,11 +80,13 @@ tooltip {
 }
 
 #custom-update {
-  font-size: 10px;
 }
 
 #clock {
   margin-left: 8.75px;
+  background-color: #242432;
+  padding: 0 4px;
+  border-radius: 0 0 8px 8px;
 }
 
 .hidden {
@@ -82,7 +96,6 @@ tooltip {
 #custom-screenrecording-indicator {
   min-width: 12px;
   margin-left: 8.75px;
-  font-size: 10px;
 }
 
 #custom-screenrecording-indicator.active {
