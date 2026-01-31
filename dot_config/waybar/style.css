@@ -13,9 +13,9 @@
 }
 
 #waybar > box {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    min-height: unset;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  min-height: unset;
 }
 
 .modules-left {
@@ -63,6 +63,7 @@
 
 #bluetooth {
   margin-right: 15px;
+  padding-left: 6px;
 }
 
 #network {
