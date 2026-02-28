@@ -13,11 +13,13 @@ The goal of this repository is to keep a clean, reproducible, and well-structure
 .
 ├── bin/
 │   └── executable_iphone_charge.sh
+├── .chezmoiignore
 ├── dot_bashrc
 ├── dot_config/
 │   ├── hypr/
 │   │   ├── bindings.conf
-│   │   └── hyprland.conf
+│   │   ├── hyprland.conf
+│   │   └── hyprlock.conf.tmpl
 │   └── waybar/
 │       ├── config.jsonc
 │       └── style.css
@@ -31,6 +33,10 @@ The goal of this repository is to keep a clean, reproducible, and well-structure
 ```
 
 ---
+
+## .chezmoiignore
+
+Specifies files and patterns that chezmoi should ignore and not manage.
 
 ## bin/
 
@@ -52,6 +58,7 @@ Configuration files that are installed into ~/.config.
 - **hypr/**: Hyprland configuration.
 	- bindings.conf
 	- hyprland.conf
+	- hyprlock.conf.tmpl
 - **waybar/**: Waybar configuration.
 	- config.jsonc
 	- style.css
@@ -75,6 +82,10 @@ General Hyprland configuration and rules.
 * bindings.conf
 
 Keybindings and shortcuts.
+
+* hyprlock.conf.tmpl
+
+Hyprlock (screen locker) configuration. Processed as a Go template by chezmoi.
 
 ### waybar/
 
