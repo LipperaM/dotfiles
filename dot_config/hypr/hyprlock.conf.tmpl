@@ -39,5 +39,5 @@ input-field {
 }
 
 auth {
-    fingerprint:enabled = false
+    fingerprint:enabled = {{ if eq .chezmoi.hostname "t14" }}true{{ else }}false{{ end }}
 }
