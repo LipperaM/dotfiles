@@ -47,9 +47,18 @@
   margin-right: 15px;
 }
 
-#cpu,
+#custom-weather {
+  margin-right: 15px;
+}
+
+#memory,
+#cpu {
+  margin-right: 8px;
+}
 #battery,
-#pulseaudio,
+#pulseaudio {
+  margin-right: 15px;
+}
 #custom-omarchy,
 #custom-screenrecording-indicator,
 #custom-update {
@@ -63,7 +72,6 @@
 
 #bluetooth {
   margin-right: 15px;
-  padding-left: 6px;
 }
 
 #network {
