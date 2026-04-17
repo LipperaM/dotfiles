@@ -8,9 +8,11 @@
   "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator"],
   "modules-right": [
     "custom/iphone_charge",
+    "custom/weather",
     "bluetooth",
     "network",
     "pulseaudio",
+    "memory",
     "cpu",
     "battery"
   ],
@@ -53,13 +55,29 @@
     "signal": 7,
     "interval": 3600
   },
+  "custom/weather":{ 
+    "exec": "/bin/sh -c \"curl -s 'wttr.in/?format=1' | sed -E 's/\\+([0-9])/\\1/g'\"",
+    "interval": 1800,
+    "return-type": "text",
+    "format": "{}",
+    "tooltip-format": "Click to see full weather",
+    "on-click": "kitty --class FloatingWeather sh -c 'curl -s wttr.in/?d; read'"
+  },
   "custom/iphone_charge": {
     "exec": "sh -c '/bin/cat /tmp/iphone_charge 2>/dev/null || echo \"\"'",
     "format": " {}%",
     "tooltip-format": "iPhone charging",
     "interval": 60,
+    "on-click": "sh -c '> /tmp/iphone_charge'",
     "return-type": "text"
 },
+  "memory": {
+    "interval": 5,
+    "format": " ",
+    "tooltip": true,
+    "on-click": "$TERMINAL -e btop",
+    "tooltip-format": "{used:0.1f} GiB / {total:0.1f} GiB"
+  },
   "cpu": {
     "interval": 5,
     "format": "󰍛",
