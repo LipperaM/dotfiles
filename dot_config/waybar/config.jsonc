@@ -56,7 +56,7 @@
     "interval": 3600
   },
   "custom/weather":{ 
-    "exec": "/bin/sh -c \"curl -s 'wttr.in/?format=1' | sed -E 's/\\+([0-9])/\\1/g'\"",
+    "exec": "/bin/sh -c \"curl -s 'wttr.in/?format=1' | sed -E 's/\\+//g; s/   / /g'\"",
     "interval": 1800,
     "return-type": "text",
     "format": "{}",
