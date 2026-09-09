@@ -72,3 +72,7 @@ function pomo() {
         fi
     done
 }
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/bennet/.local/bin:$PATH"
